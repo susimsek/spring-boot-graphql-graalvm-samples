@@ -31,13 +31,13 @@ mvn clean install
 To compile as native, run the following goal:
 
 ```
-$ mvn native:compile -Pnative
+mvn native:compile -Pnative
 ```
 
 Then, you can run the app as follows:
 
 ```
-$ target/spring-boot-graphql-graalvm-samples
+target/spring-boot-graphql-graalvm-samples
 ```
 
 ## Testing
@@ -46,16 +46,6 @@ You can run application's tests by typing the following command
 
 ```
 mvn verify
-```
-
-## Detekt
-
-Detekt a static code analysis tool for the Kotlin programming language
-
-You can run detekt by typing the following command
-
-```sh
-mvn antrun:run@detekt
 ```
 
 ## Docker
