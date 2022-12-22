@@ -1,0 +1,40 @@
+extend schema
+@link(
+    url: "https://specs.apollo.dev/federation/v2.0",
+    import: ["@extends", "@external", "@inaccessible", "@key", "@override", "@provides", "@requires", "@shareable", "@tag"]
+)
+
+directive @NotBlank(message : String = "graphql.validation.NotBlank.message") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+directive @Size(min : Int = 0, max : Int = 2147483647, message : String = "graphql.validation.Size.message") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+scalar Locale
+scalar Url
+scalar PositiveInt
+scalar UUID
+scalar BigDecimal
+
+type Query {
+    hello: Message
+}
+
+type Mutation {
+    createMessage(input: AddMessageInput!): Message!
+}
+
+type Subscription{
+    messageAdded: Message!
+}
+
+type Message @key(fields: "id") {
+    id: ID!,
+    content: String!
+    locale: Locale!
+    length : PositiveInt!
+    price:  BigDecimal!
+}
+
+input AddMessageInput {
+    content: String! @NotBlank @Size(min: 4, max: 1000)
+    length : PositiveInt!
+    price:  BigDecimal!
+}

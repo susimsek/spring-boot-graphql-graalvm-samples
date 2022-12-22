@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: spring-gql-graalvm-samples
+  main:
+    allow-bean-definition-overriding: true
+  web:
+    locale: en
+  graphql:
+    websocket:
+      path: /subscriptions
+    graphiql:
+      enabled: true
+      props:
+        variables:
+          headerEditorEnabled: true
+          shouldPersistHeaders: true
+server:
+  port: ${PORT:9091}
